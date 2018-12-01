@@ -9,7 +9,7 @@ public class BasicEnemyBehavior : PlayerBehavior
     private GunBehavior gb;
     private MusclesBehavior mb;
 
-    private Transform closest;
+    protected Transform closest;
     private footScript leftFoot;
     private footScript rightFoot;
 
@@ -40,7 +40,7 @@ public class BasicEnemyBehavior : PlayerBehavior
         bool hasLeft = leftFoot.consumeHasGround();
         bool hasRight = rightFoot.consumeHasGround();
 
-        print(Vector2.Distance(transform.position, closest.position) + " " + hasLeft + " " + hasRight);
+        //print(Vector2.Distance(transform.position, closest.position) + " " + hasLeft + " " + hasRight);
 
         if (Vector2.Distance(transform.position, closest.position) <= engagementDistance)
         {
@@ -54,5 +54,30 @@ public class BasicEnemyBehavior : PlayerBehavior
             }
         }
         return 0f;
+    }
+
+    public override Vector2 getShoot()
+    {
+        return Vector2.zero;
+    }
+
+    public override float getJump()
+    {
+        return 0;
+    }
+
+    public float getDirToPlayer(){
+        if (Vector2.Distance(transform.position, closest.position) <= engagementDistance)
+        {
+            if (closest.position.x < transform.position.x)
+            {
+                return -1f;
+            }
+            if (closest.position.x > transform.position.x)
+            {
+                return 1f;
+            }
+        }
+        return 0;
     }
 }

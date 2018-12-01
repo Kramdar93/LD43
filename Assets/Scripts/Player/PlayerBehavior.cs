@@ -115,26 +115,27 @@ public class PlayerBehavior : MonoBehaviour {
     void handleShoot()
     {
         if(shootyPoint == null){return;}
+        Vector2 shootDir = getShoot();
         if (Time.fixedTime - lastShot >= bulletCooldown
-            && (autoFire || Input.GetAxisRaw("Fire") < ggd.accuracyLimit))
+            && (autoFire || shootDir.magnitude < ggd.accuracyLimit))
         {
             canShoot = true;
         }
-        if (canShoot && bulletTemplate != null && Input.GetAxisRaw("Fire") > ggd.accuracyLimit)
+        if (canShoot && bulletTemplate != null && shootDir.magnitude > ggd.accuracyLimit)
         {
             canShoot = false;
             lastShot = Time.fixedTime;
             GameObject go = GameObject.Instantiate(bulletTemplate.gameObject);
             BulletBehavior created = go.GetComponent<BulletBehavior>();
-            if (facingLeft)
+            if (shootDir.x < 0)
             {
-                created.initVel = Vector2.left * shootyForce;
+                created.initVel = shootDir * shootyForce;
                 created.transform.position = new Vector2(transform.position.x - shootyPoint.localPosition.x,
                     transform.position.y);
             }
             else
             {
-                created.initVel = Vector2.right * shootyForce;
+                created.initVel = shootDir * shootyForce;
                 created.transform.position = shootyPoint.position;
             }
             created.GetComponent<Rigidbody2D>().velocity = rb2.velocity;
@@ -158,9 +159,17 @@ public class PlayerBehavior : MonoBehaviour {
     }
 
     //override me daddy
-    public virtual float getShoot()
+    public virtual Vector2 getShoot()
     {
-        return Input.GetAxisRaw("Fire");
+        if (facingLeft)
+        {
+            return new Vector2(-Input.GetAxisRaw("Fire"),0);
+        }
+        else
+        {
+            return new Vector2(Input.GetAxisRaw("Fire"), 0);
+        }
+        
     }
 
     public void handleAnims()
