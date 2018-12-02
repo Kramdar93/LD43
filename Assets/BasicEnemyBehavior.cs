@@ -10,8 +10,11 @@ public class BasicEnemyBehavior : PlayerBehavior
     private MusclesBehavior mb;
 
     protected Transform closest;
-    private footScript leftFoot;
-    private footScript rightFoot;
+    protected footScript leftFoot;
+    protected footScript rightFoot;
+
+    protected bool hasLeft = false;
+    protected bool hasRight = false;
 
 	// Use this for initialization
 	public override void Start () {
@@ -33,13 +36,13 @@ public class BasicEnemyBehavior : PlayerBehavior
         {
             closest = mb.transform;
         }
+
+        hasLeft = leftFoot.consumeHasGround();
+        hasRight = rightFoot.consumeHasGround();
     }
 
     public override float getMovement()
     {
-        bool hasLeft = leftFoot.consumeHasGround();
-        bool hasRight = rightFoot.consumeHasGround();
-
         //print(Vector2.Distance(transform.position, closest.position) + " " + hasLeft + " " + hasRight);
 
         if (Vector2.Distance(transform.position, closest.position) <= engagementDistance)

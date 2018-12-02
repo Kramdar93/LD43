@@ -8,12 +8,26 @@ public class MusclesBehavior : PlayerBehavior
     private Transform grabPoint;
     private bool gunClose = false;
     private bool justPicked = false;
+    private footScript leftFoot;
+    private footScript rightFoot;
+    private footScript jumpLeft;
+    private footScript jumpRight;
+
+    private bool jumpableLeft = false;
+    private bool jumpableRight = false;
+    private bool hasLeft = false;
+    private bool hasRight = false;
+    private bool justJumped = false;
 
     public override void Start()
     {
         base.Start();
         gun = FindObjectOfType<GunBehavior>();
         grabPoint = transform.Find("grabPoint");
+        leftFoot = transform.Find("leftFloor").GetComponent<footScript>();
+        rightFoot = transform.Find("rightFloor").GetComponent<footScript>();
+        jumpLeft = transform.Find("jumpLeft").GetComponent<footScript>();
+        jumpRight = transform.Find("jumpRight").GetComponent<footScript>();
     }
 
     public override float getMovement()
@@ -22,22 +36,45 @@ public class MusclesBehavior : PlayerBehavior
         {
             return base.getMovement(); //prevent oscillation when carried.
         }
-        float res = base.getMovement();
-        if (Mathf.Sign(gun.transform.position.x - transform.position.x) != Mathf.Sign(res))
+        if (Mathf.Sign(gun.transform.position.x - transform.position.x) < 0 && (hasLeft || jumpableLeft))
         {
-            return 0f;
+            return -1f;
         }
-        return res;
+        if (Mathf.Sign(gun.transform.position.x - transform.position.x) > 0 && (hasRight || jumpableRight))
+        {
+            return 1f;
+        }
+        return 0f;
     }
 
     public override float getJump()
     {
         float input = base.getJump();
-        if (gunClose)
+        if (gun.isHeld)
         {
             return input;
         }
-        return 0f;
+        else if(!justJumped)
+        {
+            float playerDir = gun.transform.position.x - transform.position.x;
+            //print(playerDir + " " + jumpableLeft + " " + jumpableRight);
+            if (!hasLeft && playerDir < 0 && jumpableLeft)
+            {
+                justJumped = true;
+                return 1;
+            }
+            if (!hasLeft && playerDir > 0 && jumpableRight)
+            {
+                justJumped = true;
+                return 1;
+            }
+            return 0f;
+        }
+        else if (justJumped)
+        {
+            justJumped = false;
+        }
+        return 0;
     }
 
     public void OnTriggerStay2D(Collider2D col)
@@ -55,6 +92,15 @@ public class MusclesBehavior : PlayerBehavior
             print("releasing controll");
             gunClose = false;
         }
+    }
+
+    public override void preHandle()
+    {
+        base.preHandle();
+        jumpableLeft = jumpLeft.consumeHasGround();
+        jumpableRight = jumpRight.consumeHasGround();
+        hasRight = rightFoot.consumeHasGround();
+        hasLeft = leftFoot.consumeHasGround();
     }
 
     public override void postHandle()

@@ -10,6 +10,8 @@ public class JumpEnemyBehavior : BasicEnemyBehavior
     private bool jumpableLeft = false;
     private bool jumpableRight = false;
 
+    private bool justJumped = false;
+
 	// Use this for initialization
 	public override void Start () {
         base.Start();
@@ -43,13 +45,19 @@ public class JumpEnemyBehavior : BasicEnemyBehavior
     {
         float playerDir = getDirToPlayer();
         //print(playerDir + " " + jumpableLeft + " " + jumpableRight);
-        if (playerDir < 0 && jumpableLeft)
+        if (!hasLeft && playerDir < 0 && jumpableLeft && !justJumped)
         {
+            justJumped = true;
             return 1;
         }
-        if (playerDir > 0 && jumpableRight)
+        if (!hasRight && playerDir > 0 && jumpableRight && !justJumped)
         {
+            justJumped = true;
             return 1;
+        }
+        if (justJumped)
+        {
+            justJumped = false;
         }
         return 0;
     }
