@@ -16,17 +16,17 @@ public class BulletBehavior : MonoBehaviour {
     public void OnCollisionEnter2D(Collision2D col)
     {
         SwitchBehavior sb = col.collider.GetComponent<SwitchBehavior>();
-        print(col.collider.gameObject.name);
+        //print(col.collider.gameObject.name);
         if (sb != null)
         {
             audioMan.playClipHere("hit", transform.position);
-            print("in there bois");
+            //print("in there bois");
             sb.hitMe();
         }
         else
         {
             audioMan.playClipHere("miss", transform.position);
-            print("no switch on collider");
+            //print("no switch on collider");
         }
         GameObject.Destroy(this.gameObject);
     }

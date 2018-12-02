@@ -14,13 +14,9 @@ public class smartClip : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         src = GetComponent<AudioSource>();
-        print(tracks.Length);
-        print(loops.Length);
+        //print(tracks.Length);
+        //print(loops.Length);
         index = 0;
-        src.clip = tracks[index];
-        src.loop = loops[index];
-        src.Play();
-        index += 1;
 	}
 	
 	// Update is called once per frame
@@ -32,7 +28,6 @@ public class smartClip : MonoBehaviour {
                 Destroy(gameObject);
                 return;
             }
-            print(index + " should be less than " + tracks.Length);
             src.clip = tracks[index];
             src.loop = loops[index];
             src.Play();

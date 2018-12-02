@@ -51,20 +51,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\AudioManagerBehavior.cs" />
-     <Compile Include="Assets\BasicEnemyBehavior.cs" />
-     <Compile Include="Assets\footScript.cs" />
-     <Compile Include="Assets\JumpEnemyBehavior.cs" />
+     <Compile Include="Assets\Scripts\AudioManagerBehavior.cs" />
+     <Compile Include="Assets\Scripts\BasicEnemyBehavior.cs" />
      <Compile Include="Assets\Scripts\BulletBehavior.cs" />
      <Compile Include="Assets\Scripts\CameraTargetBehavior.cs" />
+     <Compile Include="Assets\Scripts\footScript.cs" />
      <Compile Include="Assets\Scripts\GlobalGameData.cs" />
+     <Compile Include="Assets\Scripts\JumpEnemyBehavior.cs" />
      <Compile Include="Assets\Scripts\Player\GunBehavior.cs" />
      <Compile Include="Assets\Scripts\Player\MusclesBehavior.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerBehavior.cs" />
-     <Compile Include="Assets\ShootEnemyBehavior.cs" />
-     <Compile Include="Assets\smartClip.cs" />
-     <Compile Include="Assets\switchableHinge.cs" />
-     <Compile Include="Assets\SwitchBehavior.cs" />
+     <Compile Include="Assets\Scripts\ShootEnemyBehavior.cs" />
+     <Compile Include="Assets\Scripts\smartClip.cs" />
+     <Compile Include="Assets\Scripts\switchableHinge.cs" />
+     <Compile Include="Assets\Scripts\SwitchBehavior.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

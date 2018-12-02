@@ -26,11 +26,20 @@ public class GunBehavior : PlayerBehavior
 
     public override float getMovement()
     {
+        float parentRes = base.getMovement();
         if (isHeld)
         {
+            if (parentRes < -ggd.accuracyLimit)
+            {
+                facingLeft = true;
+            }
+            else if (parentRes > ggd.accuracyLimit)
+            {
+                facingLeft = false;
+            }
             return 0f;
         }
-        return base.getMovement();
+        return parentRes;
     }
 
 }

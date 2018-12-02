@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerBehavior : MonoBehaviour {
 
+    public Sprite rightSprite, leftSprite;
+
     public bool autoFire = false;
     public float bulletCooldown = 0.1f;
     public float shootyForce = 15;
@@ -27,6 +29,11 @@ public class PlayerBehavior : MonoBehaviour {
     private bool jumped = false;
     private float lastShot = 0;
     private bool canShoot = true;
+    private bool oldLeft = false;
+    protected float lastMoveInput = 0;
+
+    private SpriteRenderer renderer;
+    private Animator anim;
 
     // Use this for initialization
     public virtual void Start()
@@ -37,6 +44,8 @@ public class PlayerBehavior : MonoBehaviour {
         ground = LayerMask.GetMask("Ground");
         feet = transform.Find("feet").GetComponent<Collider2D>();
         shootyPoint = transform.Find("shootyPoint");
+        renderer = transform.Find("sprite").GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -71,6 +80,15 @@ public class PlayerBehavior : MonoBehaviour {
         }
 
         float mv = getMovement();
+        lastMoveInput = mv;
+        if (mv < -ggd.accuracyLimit)
+        {
+            facingLeft = true;
+        }
+        else if (mv > ggd.accuracyLimit)
+        {
+            facingLeft = false;
+        }
 
         result += Vector2.right * mv * runAccel;
 
@@ -181,9 +199,22 @@ public class PlayerBehavior : MonoBehaviour {
 
     public void handleAnims()
     {
-        if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) > ggd.accuracyLimit)
+        if (facingLeft != oldLeft && facingLeft)
         {
-            facingLeft = Input.GetAxisRaw("Horizontal") < -ggd.accuracyLimit;
+            renderer.sprite = leftSprite;
+        }
+        else if (facingLeft != oldLeft)
+        {
+            renderer.sprite = rightSprite;
+        }
+        oldLeft = facingLeft;
+        if ( isOnGround() && (lastMoveInput > ggd.accuracyLimit || lastMoveInput < -ggd.accuracyLimit) )
+        {
+            anim.SetBool("isWalking", true);
+        }
+        else
+        {
+            anim.SetBool("isWalking", false);
         }
     }
 

@@ -6,7 +6,7 @@ public class MusclesBehavior : PlayerBehavior
 {
     private GunBehavior gun;
     private Transform grabPoint;
-    private bool gunClose = false;
+    //private bool gunClose = false;
     private bool justPicked = false;
     private footScript leftFoot;
     private footScript rightFoot;
@@ -36,11 +36,11 @@ public class MusclesBehavior : PlayerBehavior
         {
             return base.getMovement(); //prevent oscillation when carried.
         }
-        if (Mathf.Sign(gun.transform.position.x - transform.position.x) < 0 && (hasLeft || jumpableLeft))
+        if (!isGunClose() && Mathf.Sign(gun.transform.position.x - transform.position.x) < 0 && (hasLeft || jumpableLeft))
         {
             return -1f;
         }
-        if (Mathf.Sign(gun.transform.position.x - transform.position.x) > 0 && (hasRight || jumpableRight))
+        if (!isGunClose() && Mathf.Sign(gun.transform.position.x - transform.position.x) > 0 && (hasRight || jumpableRight))
         {
             return 1f;
         }
@@ -76,7 +76,7 @@ public class MusclesBehavior : PlayerBehavior
         }
         return 0;
     }
-
+    /*
     public void OnTriggerStay2D(Collider2D col)
     {
         if (col.GetComponent<GunBehavior>() != null)
@@ -93,7 +93,7 @@ public class MusclesBehavior : PlayerBehavior
             gunClose = false;
         }
     }
-
+    */
     public override void preHandle()
     {
         base.preHandle();
@@ -105,7 +105,7 @@ public class MusclesBehavior : PlayerBehavior
 
     public override void postHandle()
     {
-        if (gunClose && !justPicked && Input.GetAxisRaw("Vertical") > ggd.accuracyLimit && !gun.isHeld)
+        if (isGunClose() && !justPicked && Input.GetAxisRaw("Vertical") > ggd.accuracyLimit && !gun.isHeld)
         {
             gun.isHeld = true;
             justPicked = true;
@@ -127,14 +127,18 @@ public class MusclesBehavior : PlayerBehavior
                 gun.rb2.velocity = new Vector2(gun.rb2.velocity.x, 0);
             }
             gun.isHeld = false;
-            if (facingLeft)
+            if (lastMoveInput < -ggd.accuracyLimit)
             {
                 gun.remoteJump((Vector2.up + Vector2.left).normalized);
 
             }
-            else
+            else if (lastMoveInput > ggd.accuracyLimit)
             {
                 gun.remoteJump((Vector2.up + Vector2.right).normalized);
+            }
+            else
+            {
+                gun.remoteJump(Vector2.up);
             }
             justPicked = true;
         }
@@ -144,5 +148,10 @@ public class MusclesBehavior : PlayerBehavior
             gun.transform.position = grabPoint.position;
             gun.rb2.velocity = rb2.velocity;
         }
+    }
+
+    public bool isGunClose()
+    {
+        return Vector2.Distance(gun.transform.position, transform.position) <= 1;
     }
 }
