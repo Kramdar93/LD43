@@ -61,6 +61,8 @@
      <Compile Include="Assets\Scripts\Player\MusclesBehavior.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerBehavior.cs" />
      <Compile Include="Assets\ShootEnemyBehavior.cs" />
+     <Compile Include="Assets\switchableHinge.cs" />
+     <Compile Include="Assets\SwitchBehavior.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
