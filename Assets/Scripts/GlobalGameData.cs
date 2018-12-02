@@ -19,4 +19,38 @@ public class GlobalGameData : MonoBehaviour {
 	//	
 	//}
 
+
+    public GameObject getCharacter(char c)
+    {
+        string prefabName = "";
+        if (char.IsLetter(c))
+        {
+            prefabName = c.ToString();
+        }
+        else
+        {
+            switch (c)
+            {
+                case '.':
+                    prefabName = "period";
+                    break;
+                case ',':
+                    prefabName = "comma";
+                    break;
+                case '"':
+                    prefabName = "quote";
+                    break;
+                case '!':
+                    prefabName = "exclam";
+                    break;
+                case '?':
+                    prefabName = "question";
+                    break;
+                default:
+                    return null;
+            }
+        }
+        return (GameObject)Resources.Load("prefabs/"+prefabName, typeof(GameObject));
+    }
+
 }

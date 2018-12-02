@@ -51,6 +51,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\conversationBehavior.cs" />
+     <Compile Include="Assets\finishAreaBehavior.cs" />
      <Compile Include="Assets\Scripts\AudioManagerBehavior.cs" />
      <Compile Include="Assets\Scripts\BasicEnemyBehavior.cs" />
      <Compile Include="Assets\Scripts\BulletBehavior.cs" />
@@ -65,6 +67,7 @@
      <Compile Include="Assets\Scripts\smartClip.cs" />
      <Compile Include="Assets\Scripts\switchableHinge.cs" />
      <Compile Include="Assets\Scripts\SwitchBehavior.cs" />
+     <Compile Include="Assets\textObjBehavior.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

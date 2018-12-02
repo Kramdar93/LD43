@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gravity: 10
   accuracyLimit: 0.1
-  sceneType: level
-  prevScene: 
+  sceneType: menu
+  prevScene: menu

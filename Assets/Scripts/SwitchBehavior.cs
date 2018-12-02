@@ -8,7 +8,7 @@ public class SwitchBehavior : MonoBehaviour {
 
     public void hitMe()
     {
-        print("boom goes my d");
+        //print("boom goes my d");
         foreach(GameObject g in connections){
             if (g.GetComponent<switchableHinge>() != null)
             {

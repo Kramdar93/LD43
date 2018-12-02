@@ -59,6 +59,13 @@ MonoBehaviour:
   levelMusic:
   - {fileID: 8300000, guid: d044392e84600384aa3532227c8e99e0, type: 3}
   - {fileID: 8300000, guid: 97b2f45114485b44c818fd298f213801, type: 3}
+  voices:
+  - {fileID: 8300000, guid: 1aaefc6a03e4f064f8d857a3a63d9000, type: 3}
+  - {fileID: 8300000, guid: 13fbf8911c957a14b810c8603d917fee, type: 3}
+  - {fileID: 8300000, guid: 34c5a28135d8e0447b6f44b3a7d37888, type: 3}
+  - {fileID: 8300000, guid: 75a7866117b88ea429e40b0502d49dd4, type: 3}
+  - {fileID: 8300000, guid: befbaa4936d8e094d8ee3e2adb304759, type: 3}
+  - {fileID: 8300000, guid: 314d22d79409117479586361d8849d8c, type: 3}
   shoot: {fileID: 8300000, guid: d8001ab7aae63364897b59157fdb2932, type: 3}
   hit: {fileID: 8300000, guid: 818f8c03da345874e83d14d3c22a4816, type: 3}
   miss: {fileID: 8300000, guid: 3b544d894c5d2e9428cc069977f7f288, type: 3}
