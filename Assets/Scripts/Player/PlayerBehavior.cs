@@ -21,6 +21,7 @@ public class PlayerBehavior : MonoBehaviour {
     protected GlobalGameData ggd;
     protected Collider2D feet;
     protected Transform shootyPoint;
+    protected AudioManagerBehavior audioManager;
 
     protected LayerMask ground;
     private bool jumped = false;
@@ -30,6 +31,7 @@ public class PlayerBehavior : MonoBehaviour {
     // Use this for initialization
     public virtual void Start()
     {
+        audioManager = FindObjectOfType<AudioManagerBehavior>();
         rb2 = GetComponent<Rigidbody2D>();
         ggd = FindObjectOfType<GlobalGameData>();
         ground = LayerMask.GetMask("Ground");
@@ -68,7 +70,9 @@ public class PlayerBehavior : MonoBehaviour {
             result += Vector2.down * ggd.gravity;
         }
 
-        result += Vector2.right * getMovement() * runAccel;
+        float mv = getMovement();
+
+        result += Vector2.right * mv * runAccel;
 
         if (Mathf.Abs(rb2.velocity.x) > runSpeed && Mathf.Sign(result.x) == Mathf.Sign(rb2.velocity.x))
         {
@@ -91,9 +95,10 @@ public class PlayerBehavior : MonoBehaviour {
         }
     }
 
-    public void remoteJump()
+    public void remoteJump(Vector2 dir)
     {
-        rb2.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        audioManager.playClipHere("jump",transform.position);
+        rb2.AddForce(dir * jumpForce, ForceMode2D.Impulse);
     }
 
     void handleJump()
@@ -103,6 +108,7 @@ public class PlayerBehavior : MonoBehaviour {
             if (j > ggd.accuracyLimit && !jumped)
             {
                 jumped = true;
+                audioManager.playClipHere("jump", transform.position);
                 rb2.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             }
             else if (j <= ggd.accuracyLimit)
@@ -139,6 +145,7 @@ public class PlayerBehavior : MonoBehaviour {
                 created.transform.position = shootyPoint.position;
             }
             created.GetComponent<Rigidbody2D>().velocity = rb2.velocity;
+            audioManager.playClipHere("shoot", transform.position);
         }
     }
 

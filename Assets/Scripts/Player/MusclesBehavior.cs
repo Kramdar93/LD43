@@ -81,7 +81,15 @@ public class MusclesBehavior : PlayerBehavior
                 gun.rb2.velocity = new Vector2(gun.rb2.velocity.x, 0);
             }
             gun.isHeld = false;
-            gun.remoteJump();
+            if (facingLeft)
+            {
+                gun.remoteJump((Vector2.up + Vector2.left).normalized);
+
+            }
+            else
+            {
+                gun.remoteJump((Vector2.up + Vector2.right).normalized);
+            }
             justPicked = true;
         }
 

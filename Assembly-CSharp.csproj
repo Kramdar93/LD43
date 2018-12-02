@@ -51,6 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\AudioManagerBehavior.cs" />
      <Compile Include="Assets\BasicEnemyBehavior.cs" />
      <Compile Include="Assets\footScript.cs" />
      <Compile Include="Assets\JumpEnemyBehavior.cs" />
@@ -61,6 +62,7 @@
      <Compile Include="Assets\Scripts\Player\MusclesBehavior.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerBehavior.cs" />
      <Compile Include="Assets\ShootEnemyBehavior.cs" />
+     <Compile Include="Assets\smartClip.cs" />
      <Compile Include="Assets\switchableHinge.cs" />
      <Compile Include="Assets\SwitchBehavior.cs" />
  <Reference Include="UnityEngine.UI">

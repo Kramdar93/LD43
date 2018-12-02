@@ -11,7 +11,7 @@ public class ShootEnemyBehavior : BasicEnemyBehavior {
         if (!aiJustShot && Vector2.Distance(transform.position, closest.position) <= engagementDistance)
         {
             aiJustShot = true;
-            return (closest.position - transform.position).normalized;
+            return (closest.position - shootyPoint.position).normalized;
         }
         aiJustShot = false; //blip it real good
         return Vector2.zero;

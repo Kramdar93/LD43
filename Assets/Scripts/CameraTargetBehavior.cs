@@ -8,13 +8,17 @@ public class CameraTargetBehavior : MonoBehaviour {
 
     private MusclesBehavior mb;
     private GunBehavior gb;
-    private SpringJoint2D mjoint;
+    private SpringJoint2D mjoint, gjoint;
 
 	// Use this for initialization
 	void Start () {
         mb = FindObjectOfType<MusclesBehavior>();
         gb = FindObjectOfType<GunBehavior>();
         mjoint = GetComponent<SpringJoint2D>();
+        gjoint = GetComponent<SpringJoint2D>();
+
+        mjoint.connectedBody = mb.rb2;
+        gjoint.connectedBody = gb.rb2;
 	}
 	
 	// Update is called once per frame

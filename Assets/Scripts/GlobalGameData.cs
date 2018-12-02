@@ -6,6 +6,8 @@ public class GlobalGameData : MonoBehaviour {
 
     public float gravity;
     public float accuracyLimit;
+    public string sceneType;
+    public string prevScene;
 
 	// Use this for initialization
 	//void Start () {
