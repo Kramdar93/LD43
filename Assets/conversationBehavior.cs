@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class conversationBehavior : MonoBehaviour {
 
     public textObjBehavior textA, textB;
-    public SpriteRenderer picA, picB;
+    public GameObject picA, picB;
     public Sprite[] pics;
     public string[] convo1;
     public string[] convo2;
@@ -36,6 +36,8 @@ public class conversationBehavior : MonoBehaviour {
             nextBox = textB;
         }
         prevBox = null;
+        picA.SetActive(false);
+        picB.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -43,26 +45,35 @@ public class conversationBehavior : MonoBehaviour {
         if (!pressed && (Input.GetAxisRaw("Submit") > ggd.accuracyLimit || Input.GetAxisRaw("Fire") > ggd.accuracyLimit))
         {
             pressed = true;
-            if (nextSpeakerIndex >= nextSpeaker.Length && prevBox.getDone())
-            {
-                SceneManager.LoadScene(nextLevel);
-            }
-            else if(!nextBox.getDone())
+            if(!nextBox.getDone())
             {
                 nextBox.finish();
+            }
+            else if (nextSpeakerIndex >= nextSpeaker.Length && prevBox.getDone())
+            {
+                if (nextLevel == "exitGame")
+                {
+                    Application.Quit();
+                    return;
+                }
+                SceneManager.LoadScene(nextLevel);
             }
             else
             {
                 prevBox = nextBox;
                 prevBox.newString("");
+                picA.SetActive(false);
+                picB.SetActive(false);
                 if (nextSpeaker[nextSpeakerIndex] == 0)
                 {
+                    picA.SetActive(true);
                     nextBox = textA;
                     nextBox.newString(convo1[c1ind]);
                     c1ind += 1;
                 }
                 else if (nextSpeaker[nextSpeakerIndex] == 1)
                 {
+                    picB.SetActive(true);
                     nextBox = textB;
                     nextBox.newString(convo2[c2ind]);
                     c2ind += 1;

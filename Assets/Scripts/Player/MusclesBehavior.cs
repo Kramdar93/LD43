@@ -120,8 +120,7 @@ public class MusclesBehavior : PlayerBehavior
             justPicked = false;
         }
         else if (gun.isHeld && !justPicked 
-            && Input.GetAxisRaw("Vertical") > ggd.accuracyLimit 
-            && !isOnGround())
+            && Input.GetAxisRaw("Vertical") > ggd.accuracyLimit )
         {
             if(gun.rb2.velocity.y < 0){
                 gun.rb2.velocity = new Vector2(gun.rb2.velocity.x, 0);
@@ -153,5 +152,12 @@ public class MusclesBehavior : PlayerBehavior
     public bool isGunClose()
     {
         return Vector2.Distance(gun.transform.position, transform.position) <= 1;
+    }
+
+    public void remoteDrop()
+    {
+        gun.isHeld = false;
+        gun.rb2.velocity = new Vector2(gun.rb2.velocity.x, gun.rb2.velocity.y - 1);
+
     }
 }

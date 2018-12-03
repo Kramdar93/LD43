@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerBehavior : MonoBehaviour {
@@ -156,6 +157,7 @@ public class PlayerBehavior : MonoBehaviour {
                 created.initVel = shootDir * shootyForce;
                 created.transform.position = new Vector2(transform.position.x - shootyPoint.localPosition.x,
                     transform.position.y);
+                go.GetComponent<SpriteRenderer>().flipX = true;
             }
             else
             {
@@ -231,5 +233,26 @@ public class PlayerBehavior : MonoBehaviour {
     public bool isOnGround()
     {
         return feet.IsTouchingLayers(ground);
+    }
+
+    public void onDeath()
+    {
+        GunBehavior ngb = GetComponent<GunBehavior>();
+        MusclesBehavior nmb = GetComponent<MusclesBehavior>();
+        audioManager.playClipHere("explode", transform.position);
+        if (ngb == null && nmb == null)
+        {
+            Destroy(gameObject);
+        }
+        else if (nmb != null)
+        {
+            nmb.remoteDrop();
+            nmb.transform.position = new Vector2(-100, -100); //just move him elsewhere...
+        }
+        else if (ngb != null)
+        {
+            string current = SceneManager.GetActiveScene().name;
+            SceneManager.LoadScene(current);
+        }
     }
 }

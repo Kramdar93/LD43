@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4233193945252070}
   - component: {fileID: 58296594519688888}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: grabTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 4786386236977948}
   - component: {fileID: 61682376640843608}
   - component: {fileID: 114142946695180940}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: leftFloor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,7 +53,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4334054872769890}
   - component: {fileID: 212751497335475984}
-  m_Layer: 8
+  m_Layer: 14
   m_Name: sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 50229956111544212}
   - component: {fileID: 70627639830979084}
   - component: {fileID: 95619967845197580}
-  m_Layer: 8
+  m_Layer: 14
   m_Name: Muscles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 61144351467726568}
   - component: {fileID: 61464781069784726}
   - component: {fileID: 114029541598511214}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: jumpLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 61858860832801318}
   - component: {fileID: 61371395528103234}
   - component: {fileID: 114232551356047652}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: jumpRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4961426165107068}
-  m_Layer: 8
+  m_Layer: 14
   m_Name: grabPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 4258111304013120}
   - component: {fileID: 61766976499851622}
   - component: {fileID: 114421542759875642}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: rightFloor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,7 +156,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4858554069520640}
   - component: {fileID: 58217486954833832}
-  m_Layer: 8
+  m_Layer: 14
   m_Name: feet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -622,7 +622,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 14e736cccb9b94d4c9c075125209cec9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -25,7 +25,7 @@ public class GlobalGameData : MonoBehaviour {
         string prefabName = "";
         if (char.IsLetter(c))
         {
-            prefabName = c.ToString();
+            prefabName = c.ToString().ToLower();
         }
         else
         {

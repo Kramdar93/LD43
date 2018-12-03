@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 50366169175085150}
   - component: {fileID: 114495910576891340}
   - component: {fileID: 58215094334211242}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,6 +89,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cda2d6916bf15d546a3dd271b5620385, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroyOnHit: 1
+  playSound: 1
   initVel: {x: 0, y: 0}
 --- !u!212 &212058461388050316
 SpriteRenderer:
@@ -124,7 +126,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 20
-  m_Sprite: {fileID: 21300000, guid: 0f0f5303742bc474ea7e2dc939d94916, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 021889daac357a7429feb97f0c9364c8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

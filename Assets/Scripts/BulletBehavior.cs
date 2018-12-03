@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BulletBehavior : MonoBehaviour {
+    public bool destroyOnHit = true;
+    public bool playSound = true;
     public Vector2 initVel;
 
     private AudioManagerBehavior audioMan;
@@ -16,6 +18,7 @@ public class BulletBehavior : MonoBehaviour {
     public void OnCollisionEnter2D(Collision2D col)
     {
         SwitchBehavior sb = col.collider.GetComponent<SwitchBehavior>();
+        PlayerBehavior pb = col.collider.GetComponent<PlayerBehavior>();
         //print(col.collider.gameObject.name);
         if (sb != null)
         {
@@ -23,11 +26,18 @@ public class BulletBehavior : MonoBehaviour {
             //print("in there bois");
             sb.hitMe();
         }
-        else
+        else if (pb != null)
+        {
+            pb.onDeath();
+        }
+        else if (playSound)
         {
             audioMan.playClipHere("miss", transform.position);
             //print("no switch on collider");
         }
-        GameObject.Destroy(this.gameObject);
+        if (destroyOnHit)
+        {
+            GameObject.Destroy(this.gameObject);
+        }
     }
 }

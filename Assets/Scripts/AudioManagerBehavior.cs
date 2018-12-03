@@ -11,6 +11,7 @@ public class AudioManagerBehavior : MonoBehaviour
 
     private GlobalGameData ggd;
     private int offset = 0;
+    private smartClip music;
 
     // Use this for initialization
     void Start()
@@ -23,13 +24,15 @@ public class AudioManagerBehavior : MonoBehaviour
             smartClip newClip = GameObject.Instantiate<smartClip>(smartClipTemplate, ctb.transform);
             newClip.tracks = levelMusic;
             newClip.loops = new bool[] { false, true };
+            music = newClip;
         }
-        else if (ggd.prevScene != ggd.sceneType && ggd.sceneType == "menu")
+        else if (ggd.sceneType == "menu")
         {
-            CameraTargetBehavior ctb = FindObjectOfType<CameraTargetBehavior>();
+            Camera ctb = FindObjectOfType<Camera>();
             smartClip newClip = GameObject.Instantiate<smartClip>(smartClipTemplate, ctb.transform);
             newClip.tracks = menuMusic;
             newClip.loops = new bool[] { false, true };
+            music = newClip;
         }
     }
 
@@ -87,4 +90,8 @@ public class AudioManagerBehavior : MonoBehaviour
         }
     }
 
+    public void stopMusic()
+    {
+        music.StopAllCoroutines();
+    }
 }
