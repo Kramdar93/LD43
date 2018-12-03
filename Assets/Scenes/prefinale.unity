@@ -381,17 +381,17 @@ Prefab:
     - target: {fileID: 114808955899969598, guid: ccca3d61f42eaa443bcb5f0958bc8511,
         type: 2}
       propertyPath: convo1.Array.size
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 114808955899969598, guid: ccca3d61f42eaa443bcb5f0958bc8511,
         type: 2}
       propertyPath: convo2.Array.size
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 114808955899969598, guid: ccca3d61f42eaa443bcb5f0958bc8511,
         type: 2}
       propertyPath: nextSpeaker.Array.size
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4922617242730144, guid: ccca3d61f42eaa443bcb5f0958bc8511, type: 2}
       propertyPath: m_LocalPosition.x
@@ -478,7 +478,7 @@ Prefab:
     - target: {fileID: 114808955899969598, guid: ccca3d61f42eaa443bcb5f0958bc8511,
         type: 2}
       propertyPath: convo1.Array.data[2]
-      value: this has allbeen a    ruse, meet your doom...
+      value: this has allbeen a    ruse, meet your worst nightmare...
       objectReference: {fileID: 0}
     - target: {fileID: 114808955899969598, guid: ccca3d61f42eaa443bcb5f0958bc8511,
         type: 2}
@@ -493,6 +493,56 @@ Prefab:
     - target: {fileID: 114808955899969598, guid: ccca3d61f42eaa443bcb5f0958bc8511,
         type: 2}
       propertyPath: nextSpeaker.Array.data[1]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114808955899969598, guid: ccca3d61f42eaa443bcb5f0958bc8511,
+        type: 2}
+      propertyPath: convo2.Array.data[2]
+      value: please tell me its not a complicated boss with interesting mechanics!
+      objectReference: {fileID: 0}
+    - target: {fileID: 114808955899969598, guid: ccca3d61f42eaa443bcb5f0958bc8511,
+        type: 2}
+      propertyPath: nextSpeaker.Array.data[5]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114808955899969598, guid: ccca3d61f42eaa443bcb5f0958bc8511,
+        type: 2}
+      propertyPath: convo1.Array.data[3]
+      value: ha ha ha far worse...
+      objectReference: {fileID: 0}
+    - target: {fileID: 114808955899969598, guid: ccca3d61f42eaa443bcb5f0958bc8511,
+        type: 2}
+      propertyPath: convo1.Array.data[4]
+      value: ludum dares deadline approaching at light speed!
+      objectReference: {fileID: 0}
+    - target: {fileID: 114808955899969598, guid: ccca3d61f42eaa443bcb5f0958bc8511,
+        type: 2}
+      propertyPath: convo2.Array.data[3]
+      value: nooooo!!!
+      objectReference: {fileID: 0}
+    - target: {fileID: 114808955899969598, guid: ccca3d61f42eaa443bcb5f0958bc8511,
+        type: 2}
+      propertyPath: convo1.Array.data[5]
+      value: seriously though enjoy the pit...
+      objectReference: {fileID: 0}
+    - target: {fileID: 114808955899969598, guid: ccca3d61f42eaa443bcb5f0958bc8511,
+        type: 2}
+      propertyPath: nextSpeaker.Array.data[6]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114808955899969598, guid: ccca3d61f42eaa443bcb5f0958bc8511,
+        type: 2}
+      propertyPath: nextSpeaker.Array.data[7]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114808955899969598, guid: ccca3d61f42eaa443bcb5f0958bc8511,
+        type: 2}
+      propertyPath: nextSpeaker.Array.data[8]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114808955899969598, guid: ccca3d61f42eaa443bcb5f0958bc8511,
+        type: 2}
+      propertyPath: nextSpeaker.Array.data[9]
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
